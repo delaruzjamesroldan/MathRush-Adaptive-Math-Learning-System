@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathRush</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SIGN IN -->
+<section id="signin" class="screen">
+    <div class="card">
+        <h2>Sign In</h2>
+        <input id="loginEmail" placeholder="Email">
+        <input id="loginPass" type="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p onclick="show('signup')">Create Account</p>
+    </div>
+</section>
+
+<!-- SIGN UP -->
+<section id="signup" class="screen hidden">
+    <div class="card">
+        <h2>Sign Up</h2>
+        <input id="name" placeholder="Name">
+        <input id="email" placeholder="Email">
+        <input id="pass" type="password" placeholder="Password">
+        <button onclick="signup()">Register</button>
+        <p onclick="show('signin')">Back</p>
+    </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="screen hidden">
+    <div class="card">
+        <h2>Dashboard</h2>
+        <p>Difficulty: <span id="difficulty">easy</span></p>
+        <p>Streak: <span id="streak">0</span></p>
+        <button onclick="startGame()">Start Game</button>
+        <button onclick="show('profile')">Profile</button>
+    </div>
+</section>
+
+<!-- PROFILE -->
+<section id="profile" class="screen hidden">
+    <div class="card">
+        <h2>Profile</h2>
+        <p id="userName"></p>
+        <button onclick="show('dashboard')">Back</button>
+    </div>
+</section>
+
+<!-- GAME -->
+<section id="game" class="screen hidden">
+    <div class="card">
+        <h2 id="question">Question</h2>
+        <input id="answer" placeholder="Your answer">
+        <button onclick="submitAnswer()">Submit</button>
+    </div>
+</section>
+
+<!-- RESULT -->
+<section id="result" class="screen hidden">
+    <div class="card">
+        <h2>Result</h2>
+        <p id="resultText"></p>
+        <button onclick="show('dashboard')">Back</button>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
