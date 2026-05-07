@@ -1,0 +1,451 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathRush: Adaptive Math Learning System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<section id="signin" class="screen">
+
+    <div class="card">
+
+        <h1 class="logo">⚡ MathRush</h1>
+
+        <p class="subtitle">
+            Adaptive Math Learning System
+        </p>
+
+        <form onsubmit="login(event)">
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                type="password"
+                id="loginPass"
+                placeholder="Password"
+                required
+            >
+
+            <p
+                class="terms-link"
+                onclick="show('loginTerms')"
+            >
+                View Terms & Conditions
+            </p>
+
+            <label class="check-container">
+
+                <input
+                    type="checkbox"
+                    id="loginAgree"
+                >
+
+                <span>
+                    I agree to the Terms & Conditions
+                </span>
+
+            </label>
+
+            <button type="submit">
+                Sign In
+            </button>
+
+        </form>
+
+        <p class="bottom-text">
+
+            No account?
+
+            <span
+                class="link"
+                onclick="show('signup')"
+            >
+                Create Account
+            </span>
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- LOGIN TERMS -->
+<section id="loginTerms" class="screen hidden">
+
+    <div class="card">
+
+        <h2>Terms & Conditions</h2>
+
+        <div class="terms-box">
+
+            <p>• Educational purposes only.</p>
+            <p>• Adaptive difficulty adjusts automatically.</p>
+            <p>• User performance analytics are recorded.</p>
+            <p>• Respect all users of the platform.</p>
+
+        </div>
+
+        <button onclick="agreeLoginTerms()">
+            Agree
+        </button>
+
+    </div>
+
+</section>
+
+<!-- SIGNUP -->
+<section id="signup" class="screen hidden">
+
+    <div class="card">
+
+        <h2>Create Account</h2>
+
+        <form onsubmit="goTerms(event)">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Full Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                type="password"
+                id="pass"
+                placeholder="Password"
+                required
+            >
+
+            <button type="submit">
+                Continue
+            </button>
+
+        </form>
+
+        <p class="bottom-text">
+
+            <span
+                class="link"
+                onclick="show('signin')"
+            >
+                Back to Login
+            </span>
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SIGNUP TERMS -->
+<section id="terms" class="screen hidden">
+
+    <div class="card">
+
+        <h2>Terms & Conditions</h2>
+
+        <div class="terms-box">
+
+            <p>• MathRush is an adaptive learning system.</p>
+            <p>• Performance data is stored locally.</p>
+            <p>• The platform personalizes assessments.</p>
+            <p>• Users must provide accurate information.</p>
+
+        </div>
+
+        <label class="check-container">
+
+            <input
+                type="checkbox"
+                id="agree"
+            >
+
+            <span>
+                I agree to the Terms & Conditions
+            </span>
+
+        </label>
+
+        <button onclick="signup()">
+            Create Account
+        </button>
+
+    </div>
+
+</section>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="navbar hidden">
+
+    <button onclick="show('dashboard')">
+        Dashboard
+    </button>
+
+    <button onclick="show('modules')">
+        Modules
+    </button>
+
+    <button onclick="show('progress')">
+        Analytics
+    </button>
+
+    <button onclick="openProfile()">
+        Profile
+    </button>
+
+</nav>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="screen hidden">
+
+    <div class="dashboard-card">
+
+        <div class="top-bar">
+
+            <div>
+
+                <h2>MathRush</h2>
+
+                <p class="dashboard-subtitle">
+                    Adaptive Math Learning System
+                </p>
+
+            </div>
+
+            <img
+                id="dashboardProfile"
+                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                class="dashboard-profile"
+            >
+
+        </div>
+
+        <div class="analytics-card">
+
+            <h3>Learning Analytics</h3>
+
+            <div class="analytics-grid">
+
+                <div class="analytics-item">
+                    <span>Accuracy</span>
+                    <b id="accuracyScore">0%</b>
+                </div>
+
+                <div class="analytics-item">
+                    <span>Difficulty</span>
+                    <b id="difficulty">Easy</b>
+                </div>
+
+                <div class="analytics-item">
+                    <span>Correct</span>
+                    <b id="correctScore">0</b>
+                </div>
+
+                <div class="analytics-item">
+                    <span>Wrong</span>
+                    <b id="wrongScore">0</b>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="button-group">
+
+            <button onclick="startGame()">
+                ▶ Start Assessment
+            </button>
+
+            <button onclick="show('progress')">
+                📈 View Analytics
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MODULES -->
+<section id="modules" class="screen hidden">
+
+    <div class="card">
+
+        <h2>Learning Modules</h2>
+
+        <div class="module-grid">
+
+            <div class="module-card">
+                <h3>Basic Arithmetic</h3>
+                <p>Addition, subtraction, multiplication, division.</p>
+            </div>
+
+            <div class="module-card">
+                <h3>Fractions</h3>
+                <p>Fraction operations and simplification.</p>
+            </div>
+
+            <div class="module-card">
+                <h3>Algebra</h3>
+                <p>Basic algebraic expressions and equations.</p>
+            </div>
+
+            <div class="module-card">
+                <h3>Geometry</h3>
+                <p>Shapes, angles, and measurements.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROFILE -->
+<section id="profile" class="screen hidden">
+
+    <div class="card">
+
+        <h2>Profile Management</h2>
+
+        <div class="profile-preview-card">
+
+            <img
+                id="profilePreview"
+                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                class="profile-image"
+            >
+
+            <h3 id="profileDisplayName">
+                Student Name
+            </h3>
+
+        </div>
+
+        <input
+            type="file"
+            accept="image/*"
+            onchange="changeProfile(event)"
+        >
+
+        <input
+            type="text"
+            id="editName"
+            placeholder="Edit Name"
+        >
+
+        <input
+            type="email"
+            id="editEmail"
+            placeholder="Edit Email"
+        >
+
+        <button onclick="saveProfile()">
+            Save Profile
+        </button>
+
+    </div>
+
+</section>
+
+<!-- GAME -->
+<section id="game" class="screen hidden">
+
+    <div class="card">
+
+        <h2 id="question">
+            0 + 0
+        </h2>
+
+        <form onsubmit="submitAnswer(event)">
+
+            <input
+                type="number"
+                id="answer"
+                placeholder="Enter Answer"
+                required
+                autofocus
+            >
+
+            <button type="submit">
+                Submit Answer
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- RESULT -->
+<section id="result" class="screen hidden">
+
+    <div class="card">
+
+        <h2>
+            Assessment Result
+        </h2>
+
+        <p id="resultText"></p>
+
+        <button onclick="show('dashboard')">
+            Return to Dashboard
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ANALYTICS -->
+<section id="progress" class="screen hidden">
+
+    <div class="card">
+
+        <h2>Performance Analytics</h2>
+
+        <div class="progress-item">
+            <span>Correct Answers</span>
+            <b id="progressCorrect">0</b>
+        </div>
+
+        <div class="progress-item">
+            <span>Wrong Answers</span>
+            <b id="progressWrong">0</b>
+        </div>
+
+        <div class="progress-item">
+            <span>Accuracy</span>
+            <b id="progressAccuracy">0%</b>
+        </div>
+
+        <div class="progress-item">
+            <span>Current Difficulty</span>
+            <b id="progressDifficulty">Easy</b>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
